@@ -15,4 +15,10 @@ cmd = ["python3 motdet.py ",datadir, " ", num2str(duration)];
 
 disp(sout)
 
+%% load motion data
+h5fn = [datadir, pathsep, 'motion.h5'];
+load(h5fn)  % creates variable "motion"
+
+N = countcars(motion)
+
 end
