@@ -6,7 +6,6 @@ from pathlib import Path
 from argparse import ArgumentParser
 from datetime import datetime
 import h5py
-import os
 
 
 def main():
@@ -17,14 +16,10 @@ def main():
     p.add_argument('-fps', type=int, default=30)
     p = p.parse_args()
 
-    if p.odir:
-        outdir = Path(p.odir).expanduser() / datetime.now().isoformat()[:-10]
-        vidfn = outdir/'raw.mp4'
-        motfn = outdir/'motion.h5'
-        print('saving', p.resolution, 'to', outdir)  # 'motion:', motfn, 'video:', vidfn)
-        outdir.mkdir(parents=True, exist_ok=True)
-    else:
-        vidfn = os.devnull
+    outdir = Path(p.odir).expanduser() / datetime.now().isoformat()[:-10]
+    vidfn = outdir/'raw.mp4'
+    motfn = outdir/'motion.h5'
+    outdir.mkdir(parents=True, exist_ok=True)
 
     res = p.resolution
 
@@ -35,9 +30,15 @@ def main():
             camera.start_recording(str(vidfn), format='h264', motion_output=stream)
             camera.wait_recording(p.duration)
             camera.stop_recording()
+            # convert image stack to 3-D Numpy array (Nimg x Y x X)
+            imgs = stream.array
+
+            if imgs.shape[0] == 0:
+                raise ValueError("Record duration {} seconds may be too short".format(p.duration))
+
+            print('saving', imgs.shape, 'motion to', outdir)
 
             with h5py.File(motfn, 'w') as f:
-                imgs = stream.array
                 f['motion'] = np.hypot(imgs['x'], imgs['y'])
                 f['timestamp'] = datetime.now().isoformat()
 
