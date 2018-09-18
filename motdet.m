@@ -11,14 +11,8 @@ validateattributes(duration, {'numeric'}, {'real','nonnegative', 'scalar'})
 
 cmd = ["python3 motdet.py ",datadir, " ", num2str(duration)];
 
-[serr, sout] = system(cmd); 
+[serr, sout] = system(cmd);
 
 disp(sout)
+endfunction
 
-%% load motion data
-h5fn = [datadir, pathsep, 'motion.h5'];
-load(h5fn)  % creates variable "motion"
-
-N = countcars(motion)
-
-end
