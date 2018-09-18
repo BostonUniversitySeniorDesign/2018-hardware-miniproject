@@ -9,11 +9,18 @@ try
 load(h5fn)  % creates variable "motion"
 end
 
+%% params
+
+ilanes = [];
+iLPF = [];
+minv = 0;
+
+
 %% main loop
 Ncount = 0;
 %tic
 for i = 1:size(motion, 3)
-  N = countcars(motion(:,:,i));
+  N = countcars(motion(:,:,i), ilanes, iLPF, minv);
   Ncount = Ncount + N;
   disp(Ncount)
 end
