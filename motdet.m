@@ -14,5 +14,4 @@ cmd = ["python3 motdet.py ",datadir, " ", num2str(duration)];
 [serr, sout] = system(cmd);
 
 disp(sout)
-endfunction
 
