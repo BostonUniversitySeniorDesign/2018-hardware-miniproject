@@ -19,7 +19,6 @@ def main():
             N.extend(f['count'][:])
             i.append(f['index'].value)
 
-
     ax = figure().gca()
     ax.plot(N)
 

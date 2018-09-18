@@ -9,7 +9,7 @@ from datetime import datetime
 
 def main():
 
-  for i, img in enumerate(imgs):
+    for i, img in enumerate(imgs):
         if i and not i % 10:
             countfn = PATH / ('count' + datetime.now().isoformat()[:-7] + '.h5')
             with h5py.File(countfn, 'w') as f:

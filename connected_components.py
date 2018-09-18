@@ -8,12 +8,10 @@ import cv2
 def main():
 
     B = setupblob(params)
-    
+
     for i, img in enumerate(imgs):
         motion = process(img)
         keypoints = B.detect(motion)
-        
-
 
 
 def setupblob(param: dict):
@@ -31,6 +29,4 @@ def setupblob(param: dict):
     B.minArea = param['minarea']
     B.maxArea = param['maxarea']
 
-
     return cv2.SimpleBlobDetector_create(B)
-    
