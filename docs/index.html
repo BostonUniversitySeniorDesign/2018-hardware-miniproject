@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>publish_all</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-09-21"><meta name="DC.source" content="publish_all.m"><style type="text/css">
+      --><title>Multi-lane automobile detection</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-09-21"><meta name="DC.source" content="publish_all.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -66,7 +66,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><pre class="codeinput"><span class="keyword">function</span> publish_all(path)
+  </style></head><body><div class="content"><h1>Multi-lane automobile detection</h1><p>This project runs at ~ 100 fps on the Pi Zero. The enormous speed comes from using the GPU to do the hardest parts: resizing and optical flow computation.</p><div><ul><li><a href="countlanes.html">countlanes</a></li><li><a href="docount.html">docount</a></li><li><a href="motdet.html">motdet</a></li></ul></div><pre class="codeinput"><span class="keyword">function</span> publish_all(path)
 
 flist = dir([path, filesep, <span class="string">'*.m'</span>]);
 
@@ -82,6 +82,16 @@ flist = dir([path, filesep, <span class="string">'*.m'</span>]);
 <span class="keyword">end</span>
 </pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
 ##### SOURCE BEGIN #####
+%% Multi-lane automobile detection
+% This project runs at ~ 100 fps on the Pi Zero.
+% The enormous speed comes from using the GPU to do the hardest parts:
+% resizing and optical flow computation.
+%
+% * <countlanes.html countlanes>
+% * <docount.html docount>
+% * <motdet.html motdet>
+
+
 function publish_all(path)
 
 flist = dir([path, filesep, '*.m']);
