@@ -66,45 +66,6 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1>Multi-lane automobile detection</h1><p>This project runs at ~ 100 fps on the Pi Zero. The enormous speed comes from using the GPU to do the hardest parts: resizing and optical flow computation.</p><div><ul><li><a href="countlanes.html">countlanes</a></li><li><a href="docount.html">docount</a></li><li><a href="motdet.html">motdet</a></li></ul></div><pre class="codeinput"><span class="keyword">function</span> publish_all(path)
-
-flist = dir([path, filesep, <span class="string">'*.m'</span>]);
-
-<span class="keyword">for</span> i = 1:length(flist)
-  fn = publish([path,filesep,flist(i).name], <span class="string">'evalCode'</span>, false, <span class="string">'outputDir'</span>, <span class="string">'docs'</span>);
-  [~,fname,ext] = fileparts(fn);
-  fn = [fname, ext];
-
-  disp([<span class="string">'% * &lt;'</span>,fn,<span class="string">' '</span>,fname,<span class="string">'&gt;'</span>])
-<span class="keyword">end</span>
-
-
-<span class="keyword">end</span>
-</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
-##### SOURCE BEGIN #####
-%% Multi-lane automobile detection
-% This project runs at ~ 100 fps on the Pi Zero.
-% The enormous speed comes from using the GPU to do the hardest parts:
-% resizing and optical flow computation.
-%
-% * <countlanes.html countlanes>
-% * <docount.html docount>
-% * <motdet.html motdet>
-
-
-function publish_all(path)
-
-flist = dir([path, filesep, '*.m']);
-
-for i = 1:length(flist)
-  fn = publish([path,filesep,flist(i).name], 'evalCode', false, 'outputDir', 'docs');
-  [~,fname,ext] = fileparts(fn);
-  fn = [fname, ext];
+  </style></head><body><div class="content"><h1>Multi-lane automobile detection</h1><p>This project runs at ~ 100 fps on the Pi Zero. The enormous speed comes from using the GPU to do the hardest parts: resizing and optical flow computation.</p><div><ul><li><a href="countlanes.html">countlanes</a></li><li><a href="docount.html">docount</a></li><li><a href="motdet.html">motdet</a></li></ul></div>
   
-  disp(['% * <',fn,' ',fname,'>'])
-end
-
-
-end
-##### SOURCE END #####
---></body></html>
+</body></html>
